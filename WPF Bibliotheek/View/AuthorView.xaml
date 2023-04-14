@@ -13,12 +13,11 @@
         <Label Content="" HorizontalAlignment="Left" Margin="410,220,0,0" VerticalAlignment="Top"/>
         <Label Content="Author Name" HorizontalAlignment="Left" Margin="471,43,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="NameBox" HorizontalAlignment="Left" Margin="455,74,0,0" TextWrapping="Wrap" Text="{Binding SelectedAuthor.Name}" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="CreateItem" Content="New Author" Command="{Binding AddAuthorClick}"  HorizontalAlignment="Left" Height="30" Margin="20,8,0,0" VerticalAlignment="Top" Width="68"/>
-        <Button x:Name="ClearItem" Content="Delete" Command="{Binding ClearItemClick}" HorizontalAlignment="Left" Margin="515,294,0,0" VerticalAlignment="Top" Height="30" Width="55"/>
+        <Button x:Name="CreateItem" Content="New Author" Command="{Binding AddClick}"  HorizontalAlignment="Left" Height="30" Margin="20,8,0,0" VerticalAlignment="Top" Width="68"/>
+        <Button x:Name="ClearItem" Content="Delete" Command="{Binding ClearClick}" HorizontalAlignment="Left" Margin="180,8,0,0" VerticalAlignment="Top" Height="30" Width="55"/>
         <ListBox ItemsSource="{Binding SelectedAuthor.Item}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedItem}" Margin="250,43,390,35"/>
-        <Button x:Name="SaveButton" Content="Save" Command="{Binding SaveItemClick}" HorizontalAlignment="Left" Height="32" Margin="485,104,0,0" VerticalAlignment="Top" Width="60" />
-        <Button x:Name="LinkButton" Content="Link" Command="{Binding LinkItemClick}" HorizontalAlignment="Left" Height="32" Margin="515,340,0,0" VerticalAlignment="Top" Width="60" />
-        <DataGrid HorizontalAlignment="Left" Height="366" Margin="20,43,0,0" VerticalAlignment="Top" Width="215" ItemsSource="{Binding AllAuthors}" SelectedItem="{Binding SelectedAuthor}"/>
+        <Button x:Name="SaveButton" Content="Save" Command="{Binding SaveClick}" HorizontalAlignment="Left" Height="32" Margin="485,104,0,0" VerticalAlignment="Top" Width="60" />
+        <DataGrid IsReadOnly="True" HorizontalAlignment="Left" Height="366" Margin="20,43,0,0" VerticalAlignment="Top" Width="215" ItemsSource="{Binding AllAuthors}" SelectedItem="{Binding SelectedAuthor}"/>
         <Label Content="All Authors&#xD;&#xA;" HorizontalAlignment="Left" Margin="93,14,0,0" VerticalAlignment="Top"/>
         <Label Content="Their work&#xD;&#xA;" HorizontalAlignment="Left" Margin="289,14,0,0" VerticalAlignment="Top"/>
     </Grid>

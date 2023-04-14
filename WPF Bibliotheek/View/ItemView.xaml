@@ -10,14 +10,16 @@
         <local:ItemViewModel></local:ItemViewModel>
     </Window.DataContext>
     <Grid>
-        <Button x:Name="CreateItem" Content="New Item" Command="{Binding AddItemClick}"  HorizontalAlignment="Left" Height="30" Margin="20,8,0,0" VerticalAlignment="Top" Width="68"/>
-        <Button x:Name="ClearItem" Content="Delete" Command="{Binding ClearItemClick}" HorizontalAlignment="Left" Margin="320,8,0,0" VerticalAlignment="Top" Height="30" Width="55"/>
-        <ListBox ItemsSource="{Binding AllAuthors}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedAuthor}" Margin="628,39,12,39"/>
-        <Button x:Name="SaveButton" Content="Save" Command="{Binding SaveItemClick}" HorizontalAlignment="Left" Height="32" Margin="489,334,0,0" VerticalAlignment="Top" Width="60" />
-        <Button x:Name="LinkButton" Content="Link" Command="{Binding LinkItemClick}" HorizontalAlignment="Left" Height="32" Margin="485,154,0,0" VerticalAlignment="Top" Width="64" />
-        <DataGrid HorizontalAlignment="Left" Height="368" Margin="20,43,0,0" VerticalAlignment="Top" Width="365" ItemsSource="{Binding AllItems}" SelectedItem="{Binding SelectedItem}"/>
+        <Button x:Name="CreateItem" Content="New Item" Command="{Binding AddClick}"  HorizontalAlignment="Left" Height="30" Margin="20,8,0,0" VerticalAlignment="Top" Width="68"/>
+        <Button x:Name="ClearItem" Content="Delete" Command="{Binding ClearClick}" HorizontalAlignment="Left" Margin="320,8,0,0" VerticalAlignment="Top" Height="30" Width="55"/>
+        <ListBox ItemsSource="{Binding AllAuthors}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedAuthor}" Margin="640,43,10,46"/>
+        <Button x:Name="SaveButton" Content="Save" Command="{Binding SaveClick}" HorizontalAlignment="Left" Height="32" Margin="489,334,0,0" VerticalAlignment="Top" Width="60" />
+        <Button x:Name="LinkButton" Content="Link" Command="{Binding LinkClick}" HorizontalAlignment="Left" Height="32" Margin="487,94,0,0" VerticalAlignment="Top" Width="64" />
+        <DataGrid HorizontalAlignment="Left" Height="341" Margin="20,43,0,0" VerticalAlignment="Top" Width="365" ItemsSource="{Binding AllItems}" SelectedItem="{Binding SelectedItem}"/>
         <Label Content="All Items" HorizontalAlignment="Left" Margin="175,10,0,0" VerticalAlignment="Top"/>
-        <TextBox IsReadOnly="True" Text="{Binding SelectedItem}" HorizontalAlignment="Left" Height="30" Margin="465,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105"/>
-        <TextBox IsReadOnly="True" Text="{Binding SelectedAuthor}" HorizontalAlignment="Left" Height="30" Margin="464,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105"/>
+        <TextBox IsReadOnly="True" Text="{Binding SelectedItem.Name}" HorizontalAlignment="Left" Height="30" Margin="400,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223"/>
+        <TextBox IsReadOnly="True" Text="{Binding SelectedAuthor.Name}" HorizontalAlignment="Left" Height="30" Margin="400,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223"/>
+        <Button x:Name="SearchButton" Content="Button" Command="{Binding SearchClick}" HorizontalAlignment="Left" Height="25" Margin="145,399,0,0" VerticalAlignment="Top" Width="57"/>
+        <TextBox Text="{Binding SearchItem}" HorizontalAlignment="Left" Height="30" Margin="20,394,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>

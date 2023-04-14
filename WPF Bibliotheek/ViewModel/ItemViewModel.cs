@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Castle.Core.Internal;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,10 +20,12 @@ namespace WPF_Bibliotheek.ViewModel
         public Item Item { get; set; }
         public Item SelectedItem { get; set; }
         public ObservableCollection<Item> AllItems { get; set; }
+        public string SearchItem { get; set; }
         public ICommand AddClick { get; set; }
         public ICommand ClearClick { get; set; }
         public ICommand LinkClick { get; set; }
         public ICommand SaveClick { get; set; }
+        public ICommand SearchClick { get; set; }
 
         private LibraryContext _db;
 
@@ -32,6 +35,7 @@ namespace WPF_Bibliotheek.ViewModel
             ClearClick = new RelayCommand(ClearItem);
             LinkClick = new RelayCommand(LinkItem);
             SaveClick = new RelayCommand(Save);
+            SearchClick = new RelayCommand(Search);
 
             _db = new LibraryContext();
 
@@ -65,6 +69,20 @@ namespace WPF_Bibliotheek.ViewModel
         private void Save()
         {
             _db.SaveChanges();
+        }
+
+        private void Search()
+        {
+            if(string.IsNullOrWhiteSpace(SearchItem))
+            {
+                _db.Items.Include(item => item.Author).Load();
+                AllItems = _db.Items.Local.ToObservableCollection();
+            }
+            else
+            {
+                _db.Items.Include(item => item.Author).Where(item => item.Name.Contains(SearchItem));
+                AllItems = _db.Items.Local.ToObservableCollection();
+            }
         }
     }
 }
