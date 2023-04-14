@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Castle.Core.Internal;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -50,7 +51,10 @@ namespace WPF_Bibliotheek.ViewModel
 
         private void ClearAuthor()
         {
-            AllAuthors.Remove(SelectedAuthor);
+            if(!SelectedAuthor.Item.Any())
+            { 
+                AllAuthors.Remove(SelectedAuthor);
+            }
         }
         private void Save()
         {

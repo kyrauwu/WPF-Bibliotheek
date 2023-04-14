@@ -27,10 +27,8 @@ namespace WPF_Bibliotheek.ViewModel
         public ICommand AddClick { get; set; }
         public ICommand ClearClick { get; set; }
         public ICommand LinkClick { get; set; }
+        public ICommand UnlinkClick { get; set; }
         public ICommand SaveClick { get; set; }
-        public ICommand SearchClick { get; set; }
-        public ICommand FilterOnIdClick { get; set; }
-        public ICommand FilterOnAlphabetClick { get; set; }
 
         private LibraryContext _db;
 
@@ -39,6 +37,7 @@ namespace WPF_Bibliotheek.ViewModel
             AddClick = new RelayCommand(AddItem);
             ClearClick = new RelayCommand(ClearItem);
             LinkClick = new RelayCommand(LinkItem);
+            UnlinkClick = new RelayCommand(UnlinkItem);
             SaveClick = new RelayCommand(Save);
 
             _db = new LibraryContext();
@@ -67,7 +66,20 @@ namespace WPF_Bibliotheek.ViewModel
 
         private void LinkItem()
         {
-            SelectedAuthor.Item.Add(SelectedItem);
+
+            if (!SelectedItem.Author.Contains(SelectedAuthor))
+            {
+                SelectedItem.Author.Add(SelectedAuthor);
+            }
+        }
+
+        private void UnlinkItem()
+        {
+
+            if (SelectedItem.Author.Contains(SelectedAuthor))
+            {
+                SelectedItem.Author.Remove(SelectedAuthor);
+            }
         }
 
         private void Save()

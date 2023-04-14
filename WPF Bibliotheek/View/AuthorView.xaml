@@ -11,14 +11,15 @@
     </Window.DataContext>
     <Grid>
         <Label Content="" HorizontalAlignment="Left" Margin="410,220,0,0" VerticalAlignment="Top"/>
-        <Label Content="Author Name" HorizontalAlignment="Left" Margin="471,43,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="NameBox" HorizontalAlignment="Left" Margin="455,74,0,0" TextWrapping="Wrap" Text="{Binding SelectedAuthor.Name}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Change author name" HorizontalAlignment="Left" Margin="256,102,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="NameBox" HorizontalAlignment="Left" Margin="260,136,0,0" TextWrapping="Wrap" Text="{Binding SelectedAuthor.Name}" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="CreateItem" Content="New Author" Command="{Binding AddClick}"  HorizontalAlignment="Left" Height="30" Margin="20,8,0,0" VerticalAlignment="Top" Width="68"/>
-        <Button x:Name="ClearItem" Content="Delete" Command="{Binding ClearClick}" HorizontalAlignment="Left" Margin="180,8,0,0" VerticalAlignment="Top" Height="30" Width="55"/>
-        <ListBox ItemsSource="{Binding SelectedAuthor.Item}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedItem}" Margin="250,43,390,35"/>
-        <Button x:Name="SaveButton" Content="Save" Command="{Binding SaveClick}" HorizontalAlignment="Left" Height="32" Margin="485,104,0,0" VerticalAlignment="Top" Width="60" />
+        <Button x:Name="ClearItem" Content="Delete" Command="{Binding ClearClick}" HorizontalAlignment="Left" Margin="287,43,0,0" VerticalAlignment="Top" Height="30" Width="55"/>
+        <ListBox ItemsSource="{Binding SelectedAuthor.Item}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedItem}" Margin="630,43,10,35"/>
+        <Button x:Name="SaveButton" Content="Save" Command="{Binding SaveClick}" HorizontalAlignment="Left" Height="32" Margin="287,185,0,0" VerticalAlignment="Top" Width="60" />
         <DataGrid IsReadOnly="True" HorizontalAlignment="Left" Height="366" Margin="20,43,0,0" VerticalAlignment="Top" Width="215" ItemsSource="{Binding AllAuthors}" SelectedItem="{Binding SelectedAuthor}"/>
         <Label Content="All Authors&#xD;&#xA;" HorizontalAlignment="Left" Margin="93,14,0,0" VerticalAlignment="Top"/>
-        <Label Content="Their work&#xD;&#xA;" HorizontalAlignment="Left" Margin="289,14,0,0" VerticalAlignment="Top"/>
+        <Label Content="Their work&#xD;&#xA;" HorizontalAlignment="Left" Margin="689,18,0,0" VerticalAlignment="Top" Height="34"/>
+        <Label Content="Can only delete if they have no items attached&#xD;&#xA;" HorizontalAlignment="Left" Margin="347,45,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
