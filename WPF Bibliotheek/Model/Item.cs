@@ -1,9 +1,10 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace WPF_Bibliotheek.Model
 {
-    public class Item : INotifyPropertyChanged
+    public class Item : INotifyPropertyChanged, IEnumerable
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -22,6 +23,11 @@ namespace WPF_Bibliotheek.Model
         private void Notify(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            throw new System.NotImplementedException();
         }
     }
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using WPF_Bibliotheek.Classes;
 using WPF_Bibliotheek.Model;
@@ -20,6 +21,7 @@ namespace WPF_Bibliotheek.ViewModel
         public ICommand LinkClick { get; set; }
         public ICommand UnlinkClick { get; set; }
         public ICommand SaveClick { get; set; }
+        public ICommand SearchClick { get; set; }
 
         private LibraryContext _db;
 
@@ -30,6 +32,7 @@ namespace WPF_Bibliotheek.ViewModel
             LinkClick = new RelayCommand(LinkItem);
             UnlinkClick = new RelayCommand(UnlinkItem);
             SaveClick = new RelayCommand(Save);
+            SearchClick = new RelayCommand(Search);
 
             _db = new LibraryContext();
 
@@ -76,6 +79,19 @@ namespace WPF_Bibliotheek.ViewModel
         private void Save()
         {
             _db.SaveChanges();
+        }
+        private void Search()
+        {
+            if(string.IsNullOrWhiteSpace(SearchItem))
+            {
+                _db.Items.Include(item => item.Author).Load();
+                AllItems = _db.Items.Local.ToObservableCollection();
+            }
+            else
+            {
+                _db.Items.Include(item => item.Author).Where(item => item.Name.Contains(SearchItem)).Load();
+                AllItems = _db.Items.Local.ToObservableCollection();
+            }
         }
     }
 }

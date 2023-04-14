@@ -26,5 +26,7 @@
         <ListBox ItemsSource="{Binding SelectedItem.Author}" DisplayMemberPath="Name" IsSynchronizedWithCurrentItem="True" Margin="446,280,204,10"/>
         <Label Content="Current Authors" HorizontalAlignment="Left" Margin="473,249,0,0" VerticalAlignment="Top"/>
         <Button x:Name="UnlinkButton" Content="Unlink" Command="{Binding UnlinkClick}" HorizontalAlignment="Left" Height="32" Margin="559,94,0,0" VerticalAlignment="Top" Width="64" />
+        <TextBox Text="{Binding SearchItem}" HorizontalAlignment="Left" Height="25" Margin="40,389,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
+        <Button Content="Search" Command="{Binding SearchClick}" HorizontalAlignment="Left" Margin="140,394,0,0" VerticalAlignment="Top" Height="20" Width="62"/>
     </Grid>
 </Window>

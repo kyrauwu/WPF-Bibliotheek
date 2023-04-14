@@ -9,10 +9,5 @@ namespace WPF_Bibliotheek
         {
             InitializeComponent();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
