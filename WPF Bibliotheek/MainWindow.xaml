@@ -3,10 +3,26 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPF_Bibliotheek"
+        xmlns:local="clr-namespace:WPF_Bibliotheek.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MainWindowViewModel></local:MainWindowViewModel>
+    </Window.DataContext>
     <Grid>
-
+        <Label Content="Type" HorizontalAlignment="Left" Margin="385,64,0,0" VerticalAlignment="Top"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="385,90,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TypeBox" HorizontalAlignment="Left" Margin="425,68,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.Type}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="NameBox" HorizontalAlignment="Left" Margin="427,94,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.Name}" VerticalAlignment="Top" Width="120"/>
+        <ListBox ItemsSource="{Binding AllAuthors}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedAuthor}" Margin="40,65,600,34"/>
+        <Button x:Name="CreateItem" Content="New Item" Command="{Binding AddItemClick}"  HorizontalAlignment="Left" Height="30" Margin="425,139,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="ClearItem" Content="Delete" Command="{Binding ClearItemClick}" HorizontalAlignment="Left" Margin="490,139,0,0" VerticalAlignment="Top" Height="30" Width="55"/>
+        <ListBox ItemsSource="{Binding SelectedAuthor.Item}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedItem}" Margin="205,65,435,34"/>
+        <ListBox ItemsSource="{Binding AllItems}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedItem}" Margin="595,64,45,35"/>
+        <Button x:Name="SaveButton" Content="Save" Command="{Binding SaveItemClick}" HorizontalAlignment="Left" Height="33" Margin="425,184,0,0" VerticalAlignment="Top" Width="60" />
+        <Button x:Name="LinkButton" Content="Link" Command="{Binding LinkItemClick}" HorizontalAlignment="Left" Height="33" Margin="490,184,0,0" VerticalAlignment="Top" Width="60" />
+        <Label Content="All Authors&#xD;&#xA;" HorizontalAlignment="Left" Margin="86,30,0,0" VerticalAlignment="Top"/>
+        <Label Content="What items did this author make?&#xD;&#xA;&#xD;&#xA;" HorizontalAlignment="Left" Margin="192,31,0,0" VerticalAlignment="Top"/>
+        <Label Content="All Items&#xD;&#xA;" HorizontalAlignment="Left" Margin="647,31,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
