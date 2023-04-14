@@ -1,12 +1,6 @@
-﻿using Castle.Core.Internal;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Input;
 using WPF_Bibliotheek.Classes;
 using WPF_Bibliotheek.Model;
