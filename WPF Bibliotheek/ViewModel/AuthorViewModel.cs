@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
 using WPF_Bibliotheek.Classes;
@@ -33,6 +34,7 @@ namespace WPF_Bibliotheek.ViewModel
 
             AllItems = _db.Items.Local.ToObservableCollection();
             AllAuthors = _db.Authors.Local.ToObservableCollection();
+            
         }
 
         private void AddAuthor()

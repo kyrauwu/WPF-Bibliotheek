@@ -17,7 +17,7 @@
         <Button x:Name="ClearItem" Content="Delete" Command="{Binding ClearClick}" HorizontalAlignment="Left" Margin="287,43,0,0" VerticalAlignment="Top" Height="30" Width="55"/>
         <ListBox ItemsSource="{Binding SelectedAuthor.Item}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedItem}" Margin="630,43,10,35"/>
         <Button x:Name="SaveButton" Content="Save" Command="{Binding SaveClick}" HorizontalAlignment="Left" Height="32" Margin="287,185,0,0" VerticalAlignment="Top" Width="60" />
-        <DataGrid IsReadOnly="True" HorizontalAlignment="Left" Height="366" Margin="20,43,0,0" VerticalAlignment="Top" Width="215" ItemsSource="{Binding AllAuthors}" SelectedItem="{Binding SelectedAuthor}"/>
+        <DataGrid x:Name="AuthorGrid" IsReadOnly="True" HorizontalAlignment="Left" Height="366" Margin="20,43,0,0" VerticalAlignment="Top" Width="215" ItemsSource="{Binding AllAuthors}" SelectedItem="{Binding SelectedAuthor}"/>
         <Label Content="All Authors&#xD;&#xA;" HorizontalAlignment="Left" Margin="93,14,0,0" VerticalAlignment="Top"/>
         <Label Content="Their work&#xD;&#xA;" HorizontalAlignment="Left" Margin="689,18,0,0" VerticalAlignment="Top" Height="34"/>
         <Label Content="Can only delete if they have no items attached&#xD;&#xA;" HorizontalAlignment="Left" Margin="347,45,0,0" VerticalAlignment="Top"/>
