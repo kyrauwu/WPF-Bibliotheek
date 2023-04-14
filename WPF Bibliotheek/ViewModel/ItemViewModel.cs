@@ -1,11 +1,14 @@
 ﻿using Castle.Core.Internal;
+using Castle.Core.Resource;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Input;
 using WPF_Bibliotheek.Classes;
 using WPF_Bibliotheek.Model;
@@ -26,6 +29,8 @@ namespace WPF_Bibliotheek.ViewModel
         public ICommand LinkClick { get; set; }
         public ICommand SaveClick { get; set; }
         public ICommand SearchClick { get; set; }
+        public ICommand FilterOnIdClick { get; set; }
+        public ICommand FilterOnAlphabetClick { get; set; }
 
         private LibraryContext _db;
 
@@ -35,7 +40,6 @@ namespace WPF_Bibliotheek.ViewModel
             ClearClick = new RelayCommand(ClearItem);
             LinkClick = new RelayCommand(LinkItem);
             SaveClick = new RelayCommand(Save);
-            SearchClick = new RelayCommand(Search);
 
             _db = new LibraryContext();
 
@@ -53,7 +57,7 @@ namespace WPF_Bibliotheek.ViewModel
                 Type = ItemType.Boek,
                 Name = "New name",
 
-            }); 
+            });
         }
 
         private void ClearItem()
@@ -69,20 +73,6 @@ namespace WPF_Bibliotheek.ViewModel
         private void Save()
         {
             _db.SaveChanges();
-        }
-
-        private void Search()
-        {
-            if(string.IsNullOrWhiteSpace(SearchItem))
-            {
-                _db.Items.Include(item => item.Author).Load();
-                AllItems = _db.Items.Local.ToObservableCollection();
-            }
-            else
-            {
-                _db.Items.Include(item => item.Author).Where(item => item.Name.Contains(SearchItem));
-                AllItems = _db.Items.Local.ToObservableCollection();
-            }
         }
     }
 }
