@@ -3,10 +3,11 @@ using WPF_Bibliotheek.ViewModel;
 
 namespace WPF_Bibliotheek
 {
-    public partial class AuthorWindow : Window
+    public partial class ItemView : Window
     {
-        public AuthorWindow()
+        public ItemView()
         {
+            InitializeComponent();
         }
     }
 }

@@ -12,27 +12,24 @@ using WPF_Bibliotheek.Model;
 
 namespace WPF_Bibliotheek.ViewModel
 {
-    public class MainWindowViewModel
+    public class AuthorViewModel
     {
         public Author Author { get; set; }
         public Author SelectedAuthor { get; set; }
         public ObservableCollection<Author> AllAuthors { get; set; }
         public Item Item { get; set; }
-        public Item SelectedItem { get; set; }
         public ObservableCollection<Item> AllItems { get; set; }
-        public ICommand AddAuthorClick { get; set; }
-        public ICommand ClearItemClick { get; set; }
-        public ICommand LinkItemClick { get; set; }
-        public ICommand SaveItemClick { get; set; }
+        public ICommand AddClick { get; set; }
+        public ICommand ClearClick { get; set; }
+        public ICommand SaveClick { get; set; }
 
         private LibraryContext _db;
 
-        public MainWindowViewModel()
+        public AuthorViewModel()
         {
-            AddAuthorClick = new RelayCommand(AddAuthor);
-            ClearItemClick = new RelayCommand(ClearItem);
-            /*LinkItemClick = new RelayCommand(LinkItem);*/
-            SaveItemClick = new RelayCommand(SaveItem);
+            AddClick = new RelayCommand(AddAuthor);
+            ClearClick = new RelayCommand(ClearAuthor);
+            SaveClick = new RelayCommand(Save);
 
             _db = new LibraryContext();
 
@@ -51,17 +48,11 @@ namespace WPF_Bibliotheek.ViewModel
             }); 
         }
 
-        private void ClearItem()
+        private void ClearAuthor()
         {
             AllAuthors.Remove(SelectedAuthor);
         }
-
-        /*private void LinkItem()
-        {
-            SelectedAuthor.Item.Add(SelectedItem);
-        }
-*/
-        private void SaveItem()
+        private void Save()
         {
             _db.SaveChanges();
         }

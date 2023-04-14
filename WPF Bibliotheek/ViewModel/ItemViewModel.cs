@@ -5,14 +5,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Input;
 using WPF_Bibliotheek.Classes;
 using WPF_Bibliotheek.Model;
 
-namespace WPF_Bibliotheek.ViewModel 
+namespace WPF_Bibliotheek.ViewModel
 {
-    public class AuthorWindowViewModel
+    public class ItemViewModel
     {
         public Author Author { get; set; }
         public Author SelectedAuthor { get; set; }
@@ -22,14 +21,16 @@ namespace WPF_Bibliotheek.ViewModel
         public ObservableCollection<Item> AllItems { get; set; }
         public ICommand AddClick { get; set; }
         public ICommand ClearClick { get; set; }
+        public ICommand LinkClick { get; set; }
         public ICommand SaveClick { get; set; }
 
         private LibraryContext _db;
 
-        public AuthorWindowViewModel()
+        public ItemViewModel()
         {
-            AddAClick = new RelayCommand(AddAuthor);
-            ClearClick = new RelayCommand(ClearAuthor);
+            AddClick = new RelayCommand(AddItem);
+            ClearClick = new RelayCommand(ClearItem);
+            LinkClick = new RelayCommand(LinkItem);
             SaveClick = new RelayCommand(Save);
 
             _db = new LibraryContext();
@@ -41,18 +42,26 @@ namespace WPF_Bibliotheek.ViewModel
             AllAuthors = _db.Authors.Local.ToObservableCollection();
         }
 
-        private void AddAuthor()
+        private void AddItem()
         {
-            AllAuthors.Add(new Author
+            AllItems.Add(new Item
             {
-                Name = "New name"
+                Type = ItemType.Boek,
+                Name = "New name",
+
             }); 
         }
 
-        private void ClearAuthor()
+        private void ClearItem()
         {
-            AllAuthors.Remove(SelectedAuthor);
+            AllItems.Remove(SelectedItem);
         }
+
+        private void LinkItem()
+        {
+            SelectedAuthor.Item.Add(SelectedItem);
+        }
+
         private void Save()
         {
             _db.SaveChanges();

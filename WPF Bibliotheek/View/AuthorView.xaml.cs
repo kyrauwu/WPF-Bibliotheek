@@ -3,12 +3,9 @@ using WPF_Bibliotheek.ViewModel;
 
 namespace WPF_Bibliotheek
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class AuthorView : Window
     {
-        public MainWindow()
+        public AuthorView()
         {
             InitializeComponent();
         }
