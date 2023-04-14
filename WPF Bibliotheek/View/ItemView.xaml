@@ -1,0 +1,30 @@
+﻿<Window x:Class="WPF_Bibliotheek.ItemView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Bibliotheek.ViewModel"
+        mc:Ignorable="d"
+        Title="ItemView" Height="450" Width="800">
+    <Window.DataContext>
+        <local:ItemViewModel></local:ItemViewModel>
+    </Window.DataContext>
+    <Grid>
+        <Button x:Name="CreateItem" Content="New Item" Command="{Binding AddClick}"  HorizontalAlignment="Left" Height="30" Margin="20,8,0,0" VerticalAlignment="Top" Width="68"/>
+        <Button x:Name="ClearItem" Content="Delete" Command="{Binding ClearClick}" HorizontalAlignment="Left" Margin="320,8,0,0" VerticalAlignment="Top" Height="30" Width="55"/>
+
+        <Button x:Name="SaveButton" Content="Save" Command="{Binding SaveClick}" HorizontalAlignment="Left" Height="32" Margin="491,0,0,0" VerticalAlignment="Center" Width="60" />
+        <Button x:Name="LinkButton" Content="Link" Command="{Binding LinkClick}" HorizontalAlignment="Left" Height="32" Margin="400,94,0,0" VerticalAlignment="Top" Width="64" />
+
+        <ListBox ItemsSource="{Binding AllAuthors}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedAuthor}" IsSynchronizedWithCurrentItem="True" Margin="640,43,10,46"/>
+
+        <Label Content="All Items" HorizontalAlignment="Left" Margin="175,10,0,0" VerticalAlignment="Top"/>
+        <DataGrid HorizontalAlignment="Left" Height="341" Margin="20,43,0,0" VerticalAlignment="Top" Width="365" ItemsSource="{Binding AllItems}" IsSynchronizedWithCurrentItem="True" SelectedItem="{Binding SelectedItem}"/>
+
+        <TextBox IsReadOnly="True" Text="{Binding SelectedItem.Name}" HorizontalAlignment="Left" Height="30" Margin="400,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223"/>
+        <TextBox IsReadOnly="True" Text="{Binding SelectedAuthor.Name}" HorizontalAlignment="Left" Height="30" Margin="400,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223"/>
+        <ListBox ItemsSource="{Binding SelectedItem.Author}" DisplayMemberPath="Name" IsSynchronizedWithCurrentItem="True" Margin="446,280,204,10"/>
+        <Label Content="Current Authors" HorizontalAlignment="Left" Margin="473,249,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="UnlinkButton" Content="Unlink" Command="{Binding UnlinkClick}" HorizontalAlignment="Left" Height="32" Margin="559,94,0,0" VerticalAlignment="Top" Width="64" />
+    </Grid>
+</Window>

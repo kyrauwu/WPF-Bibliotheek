@@ -3,10 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPF_Bibliotheek"
+        xmlns:local="clr-namespace:WPF_Bibliotheek.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MainWindowViewModel></local:MainWindowViewModel>
+    </Window.DataContext>
     <Grid>
-
+        <Button Content="Items" Command="{Binding GoToItemsClick}" HorizontalAlignment="Left" Margin="240,144,0,0" VerticalAlignment="Top" Height="80" Width="80"/>
+        <Button Content="Authors" Command="{Binding GoToAuthorsClick}" HorizontalAlignment="Left" Margin="480,144,0,0" VerticalAlignment="Top" Height="80" Width="80"/>
     </Grid>
 </Window>
